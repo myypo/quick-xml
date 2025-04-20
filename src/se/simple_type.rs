@@ -52,6 +52,9 @@ fn escape_item(value: &str, target: QuoteTarget, level: QuoteLevel) -> Cow<str> 
             b'&' | b'<' => true,
             _ => false,
         }),
+        (Text, None) => _escape(value, |_| false),
+        (DoubleQAttr, None) => _escape(value, |_| false),
+        (SingleQAttr, None) => _escape(value, |_| false),
         //----------------------------------------------------------------------
         (DoubleQAttr, Partial) => _escape(value, |ch| match ch {
             // Spaces used as delimiters of list items, cannot be used in the item
@@ -115,6 +118,9 @@ fn escape_list(value: &str, target: QuoteTarget, level: QuoteLevel) -> Cow<str> 
             b'&' | b'<' => true,
             _ => false,
         }),
+        (Text, None) => _escape(value, |_| false),
+        (DoubleQAttr, None) => _escape(value, |_| false),
+        (SingleQAttr, None) => _escape(value, |_| false),
         //----------------------------------------------------------------------
         (DoubleQAttr, Partial) => _escape(value, |ch| match ch {
             // Required characters to escape

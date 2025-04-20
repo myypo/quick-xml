@@ -365,6 +365,8 @@ pub enum QuoteLevel {
     /// `<`      | `&lt;`
     /// `&`      | `&amp;`
     Minimal,
+    /// Escape nothing
+    None,
 }
 
 /// Classification of the type written by the serializer.
